@@ -54,13 +54,26 @@ module.exports = function( grunt ) {
 			options.content = options.content ? options.content : {};
 		}
 
-		if ( options.section ) {
+		/* if ( options.section ) {
 
 			if ( ! options.content[ options.section ] ) {
 				grunt.log.error( "content doesn't have section " + options.section );
 			}
 
 			options.content = options.content[ options.section ];
+		} */
+
+		if ( options.section ) {
+
+			if ( mout.lang.isFunction( options.section ) ) {
+				options.content = options.content[options.section()];
+			} else {
+				if ( ! options.content[ options.section ] ) {
+					grunt.log.error( "content doesn't have section " + options.section );
+				}
+
+				options.content = options.content[ options.section ];
+			}
 		}
 
 		// =======================
