@@ -28,9 +28,9 @@ module.exports = function( grunt ) {
 			transforms: {},
 			parsePattern: /\{\{\s*([^\}]+)\s*\}\}/g,
 			variableParsePattern: /\{\{!\s*([^\}]+)\s*\}\}/,
-			removeUndefined: true
+			removeUndefined: true,
+			addPath: false
 		} );
-
 
 		// warning about removed parameter
 
@@ -67,12 +67,14 @@ module.exports = function( grunt ) {
 
 			if ( mout.lang.isFunction( options.section ) ) {
 				options.content = options.content[options.section()];
+				var cur_section = options.section();
 			} else {
 				if ( ! options.content[ options.section ] ) {
 					grunt.log.error( "content doesn't have section " + options.section );
 				}
 
 				options.content = options.content[ options.section ];
+				var cur_section = options.section;
 			}
 		}
 
@@ -702,6 +704,31 @@ module.exports = function( grunt ) {
 
 			var src = file.src[ 0 ];
 			var dest = file.dest;
+
+			if ( options.addPath ) {
+
+				if ( mout.lang.isFunction( options.addPath ) ) {
+					grunt.log.error( "addPath - String, not Function!");
+				} else if ( mout.lang.isString( options.addPath ) ) {
+					var add_str = options.addPath;
+
+					if( cur_section ) {
+						add_str = add_str.replace('section', cur_section);
+					}
+
+					var dest_arr = dest.split('/');
+					var file_name = dest_arr[dest_arr.length - 1];
+					dest_arr.pop();
+					var dest_base = '';
+					dest_arr.forEach( function( path ) {
+						dest_base += path+'/';
+					});
+					
+					if(add_str) grunt.log.ok( "String \""+add_str+"\" added to \"dest\"" );
+
+					var dest = dest_base+add_str+file_name;
+				}
+			}
 
 			if ( ! checkFile( src ) ) return;
 
