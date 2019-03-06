@@ -1,0 +1,71 @@
+{
+	"cur_section":"de",
+
+	"en": {
+		"lang":"en",
+		"title": "Apple Pie",
+		"info": {
+			"author": "Mathias"
+		},
+		"bar": false,
+		"items": [
+			"foo",
+			"bar",
+			"baz",
+			"superman"
+		],
+		"object": {
+			"name": "John Dough",
+			"place": "Some place"
+		},
+		"empty": []
+	},
+
+	"de": {
+		"lang":"de",
+		"title": "Apfelstrudel",
+		"info": {
+			"author": "Mathias"
+		}
+	},
+
+	"ru": {
+		"lang":"ru",
+		"title": "Яблочный пирог",
+		"info": {
+			"author": "Матиас"
+		}
+	},
+
+	"rooms": [
+		{
+			"width": "9",
+			"depth": "5",
+			"height": "2"
+		},
+		{
+			"width": "4",
+			"depth": "2",
+			"height": "2.4"
+		}
+	],
+
+	"groups": [
+		{
+			"name": "A-Team",
+			"members": [
+				"Joane",
+				"Marc",
+				"Frank"
+			]
+		},
+
+		{
+			"name": "B-Team",
+			"members": [
+				"Mike",
+				"Lisa"
+			]
+		}
+	]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "BakeProject",
+  "version": "0.1.0",
+  "license": "MIT",
+  "description": "none",
+  "repository": "none",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-bake": "git+https://github.com/UrbanRat/mod_grunt-bake.git",
+    "grunt-contrib-watch": "^1.0.0",
+    "jit-grunt": "^0.10.0"
+  },
+  "dependencies": {}
+}
